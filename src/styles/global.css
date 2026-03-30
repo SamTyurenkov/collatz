@@ -1,0 +1,30 @@
+:root {
+  --bg: #0f1218;
+  --panel: #171b24;
+  --text: #e8ecf4;
+  --muted: #9aa3b5;
+  --accent: #6ee7b7;
+  --border: #2a3140;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1.5rem clamp(1rem, 4vw, 2.5rem) 3rem;
+  line-height: 1.45;
+}
+
+#app {
+  min-height: calc(100vh - 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}

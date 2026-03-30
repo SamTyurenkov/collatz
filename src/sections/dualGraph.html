@@ -1,0 +1,91 @@
+<section class="section-dual-graph" aria-labelledby="dual-graph-heading">
+  <h2 id="dual-graph-heading">Consider sets instead of a tree</h2>
+  <div class="dual-graph-pair" role="group" aria-label="Two views of the same grid">
+    <figure class="dual-graph-figure">
+      <figcaption>Classic inverse Collatz tree toward 1</figcaption>
+      <svg
+        class="dual-graph-svg dual-graph-svg-path"
+        id="dual-graph-svg-path"
+        viewBox="0 0 380 260"
+        width="380"
+        height="260"
+        aria-hidden="true"
+      ></svg>
+    </figure>
+    <figure class="dual-graph-figure">
+      <figcaption>
+        Sets visualized instead of tree
+      </figcaption>
+      <svg
+        class="dual-graph-svg dual-graph-svg-structure"
+        id="dual-graph-svg-structure"
+        viewBox="0 0 380 260"
+        width="380"
+        height="260"
+        aria-hidden="true"
+      ></svg>
+    </figure>
+  </div>
+  <div class="dual-graph-tooltip" id="dual-graph-tooltip" hidden></div>
+  <p class="dual-graph-note" id="dual-graph-note" hidden></p>
+  <ul>
+    <li>green line - direct connection between steps</li>
+    <li>yellow line - connection between sets via 3n+1</li>
+    <li>red line - connection between starting number and first visible step on the graph</li>
+  </ul>
+  <h3>How do the sets relate to Collatz conjecture?</h3>
+  <code>
+    <pre>
+      S<sub>n</sub> = {n, 2n, 4n, ...}
+    </pre>
+  </code>
+  <p>
+    There is only one odd number in every set, and all its doubled variations to infinity, this means there is only one exit from every set to another set (except set with 1).
+  </p>
+  <p>
+    There is only one self-looping set with odd integer 1. because in all other cases of odd integers 2n < 3n+1 < 4n, resulting in a step into a different set.
+  </p>
+  <p>
+    Every set starting with n > 1 has only one exit to a different set, but every set also has infinite number of enters via doubled values. this results in a "n" being not important to grow of reduce, because even if it grows to infinity the entry points to the S<sub>1</sub> also grows to infinity and any S<sub>i</sub>which is already connected to S<sub>1</sub> via 3n+1 operation, this makes "n" not important to grow of reduce, because there is infinite amount of entry points to other sets. So we ignore its chaotic behavior.
+  </p>
+  <h3>What needs additional proof?</h3>
+  <p>1. There is no looping sets, except S<sub>1</sub>.</p>
+  <p>To prove that, lets consider there exist any other self-looping set. for example S<sub>z</sub> leading to S<sub>z1</sub> which leads to S<sub>z2</sub> which leads back to S<sub>z</sub>.</p>
+  <p>If that self-looping set existed, than because of infinite enters nature - it would effectifely result in 75% of numbers leading into the that self-looping set, because it has 3 times more enters than S<sub>1</sub> alone. We do not observe such behaviour currently. And this is just one additional looping set. Imagine tens of looping sets existed - than 90%+ of all numbers would lead into those loopholes.</p>
+  <p>To summarize, the logic - if a looping set exists, it also inherits catch-up all nature similar to S<sub>1</sub>, because of inifinite enters and no exit.</p>
+
+  <p>2. There cannot be infinite amount of steps, resulting in path never leading to S<sub>1</sub>.</p>
+  <p>For the sets it doesn't matter if "n" grows to a very big number, because every set which leads to S<sub>1</sub> also has infinite amount of enters.</p>
+  <p>Since there is no other catch-up all sets, or looping sets, and there is infinite amount of enters in every set multiplied by amount of sets which already lead to S<sub>1</sub> - every step from any initial number may eventually lead to already tested set, just through a higher entrypoint.</p>
+  <p>We already know that generally there is a chaotic pattern in "n" value going up and down. and this particular pattern leads to S<sub>1</sub> in the long run.</p>
+  <p>Lets look at the worst case, where odd value grows after every 3n+1, this can only happen if the division by 2 step occurs only once and immediately leads to a next odd number.</p>
+  <code>
+    <pre> 
+      n<sub>x</sub> > n<sub>x-1</sub> <br>
+      only true if there is only one division step k after 3n+1 step.
+    </pre>
+  </code>
+  <p>For the growth step to happen, there is a condition, as not all odd numbers lead to growth, only about a half of observable odd integers, e.g.</p>
+  <code>
+    <pre>
+      n ≡ 3 mod 4<br>  
+      ...3, 7, 11, 15, 19, ... (every second odd number)<br>
+      works when 3n+1 is divisible by 2 exactly once (not 2, 3, 4, etc.)
+    </pre>
+  </code>
+
+  <p>But for consequtive growth the condition becomes even stricter with every step:</p>
+  <code>
+    <pre>
+      n ≡ 2<sup>r</sup> - 1 (mod 2<sup>r</sup>) <br>
+      where r consequtive growth steps
+    </pre>
+  </code>
+  <p>So the probability of consequtive growth of odd number is:</p>
+  <code>
+    <pre>
+      1 / 2<sup>r</sup>
+    </pre>
+  </code>
+  <p>This proves chaotic pattern of "n" value going up and down is stable for any initial odd number.</p>
+</section>
