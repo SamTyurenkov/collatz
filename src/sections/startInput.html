@@ -1,0 +1,30 @@
+<section class="section-start-input" aria-labelledby="start-input-label">
+  <h1>Informal proof of Collatz conjecture</h1>
+  <label class="start-input-label" id="start-input-label" for="collatz-start-input">
+    Positive integer
+  </label>
+  <input
+    type="text"
+    id="collatz-start-input"
+    inputmode="numeric"
+    autocomplete="off"
+    aria-describedby="start-input-desc"
+  />
+  <p class="start-input-desc" id="start-input-desc">
+    This value is the starting positive integer used to explore the Collatz map: apply “if even, divide by two; if odd, multiply by three and add one,” and repeat. The conjecture claims every such starting value eventually reaches 1.
+  </p>
+  <details class="start-steps-accordion">
+    <summary>Show all trajectory steps</summary>
+    <div class="start-steps-wrap">
+      <table class="start-steps-table" aria-label="Trajectory steps table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="start-steps-body"></tbody>
+      </table>
+    </div>
+  </details>
+</section>
